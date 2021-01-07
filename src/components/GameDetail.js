@@ -21,7 +21,7 @@ export default function GameDetail({ pathId }) {
 		const element = e.target;
 		if (element.classList.contains('shadow')) {
 			document.body.style.overflow = 'auto';
-			history.push('/');
+			history.goBack();
 		}
 	};
 
@@ -63,12 +63,14 @@ export default function GameDetail({ pathId }) {
 					<Detail layoutId={pathId}>
 						<Stats>
 							<div className="rating">
-								<motion.h3 layoutId={`title ${pathId}`}>{game.name}</motion.h3>
+								<motion.h3 style={{ fontSize: '2.5rem' }} layoutId={`title ${pathId}`}>
+									{game.name}
+								</motion.h3>
 								<p>Rating: {game.rating}</p>
 								{getStars()}
 							</div>
 							<Info>
-								<h3>Platforms</h3>
+								<h3>Platforms available</h3>
 								<Platforms>
 									{game.platforms.map((data) => (
 										<img
@@ -141,14 +143,17 @@ const Stats = styled(motion.div)`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-top: 5rem;
   img {
     width: 2rem;
     height: 2rem;
     display: inline;
   }
+
 `;
 const Info = styled(motion.div)`
   text-align: center;
+
 `;
 const Platforms = styled(motion.div)`
   display: flex;
