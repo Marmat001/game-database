@@ -40,7 +40,7 @@ export default function NewGames() {
 			{!isBuffering &&
 			!searched.length && (
 				<Container>
-					<ErrorMessage style={{ color: 'red ' }}>No Results Found</ErrorMessage>{' '}
+					<ErrorMessage style={{ color: 'white ' }}>No Results Found</ErrorMessage>{' '}
 					<Button onClick={onClickHandler}>Try Again</Button>
 				</Container>
 			)}
@@ -51,7 +51,7 @@ export default function NewGames() {
 const FetchingSearchMessage = styled.h1`
 	font-size: 3rem;
 	text-align: center;
-	color: green;
+	color: white;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -70,7 +70,6 @@ const Container = styled.div`
 
 const ErrorMessage = styled.h1`
 	font-size: 3rem;
-	color: white;
 	margin-bottom: 2rem;
 `;
 

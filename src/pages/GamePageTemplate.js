@@ -67,7 +67,7 @@ const Games = styled(motion.div)`
 const LoadingMessage = styled.h1`
 	font-size: 3rem;
 	text-align: center;
-	color: green;
+	color: white;
 	display: flex;
 	justify-content: center;
 	align-items: center;

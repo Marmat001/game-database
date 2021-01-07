@@ -21,7 +21,8 @@ html {
 
  body {
      font-family: "Roboto", sans-serif;
-     background: black;
+     background-color: #a99829;
+    background-image: linear-gradient(147deg, #b09e2d 0%, #9f2626 74%);
      height: 100vh;
  }
 

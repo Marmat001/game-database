@@ -46,7 +46,7 @@ const FirstPage = () => {
 	};
 
 	return (
-		<StyledNav variants={fadeIn} initial="hidden" animate="show">
+		<StyledContainer variants={fadeIn} initial="hidden" animate="show">
 			<Particles style={particlesStyle} params={particlesOptions} />
 			<Logo>
 				<FontAwesomeIcon icon={faDatabase} size="8x" alt="logo" />
@@ -58,18 +58,21 @@ const FirstPage = () => {
 					Submit
 				</button>
 			</form>
-		</StyledNav>
+		</StyledContainer>
 	);
 };
 
-const StyledNav = styled(motion.nav)`
+const StyledContainer = styled(motion.nav)`
 height: 90vh;
 padding: 3rem 5rem;
 text-align: center;
 display: flex;
 flex-direction: column;
 justify-content: center;
-background: linear-gradient(89deg, #000000 10%,  #4c0000 50%, #000000 90%); 
+
+
+
+
 
 input {
   width: 30%;

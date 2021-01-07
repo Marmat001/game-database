@@ -15,6 +15,8 @@ import gamepad from '../img/gamepad.svg';
 import starEmpty from '../img/star-empty.png';
 import starFull from '../img/star-full.png';
 
+import { fadeIn } from '../animations';
+
 export default function GameDetail({ pathId }) {
 	const history = useHistory();
 	const exitDetailHandler = (e) => {
@@ -59,7 +61,13 @@ export default function GameDetail({ pathId }) {
 	return (
 		<div>
 			{!isLoading && (
-				<CardShadow className="shadow" onClick={exitDetailHandler}>
+				<CardShadow
+					variants={fadeIn}
+					initial="hidden"
+					animate="show"
+					className="shadow"
+					onClick={exitDetailHandler}
+				>
 					<Detail layoutId={pathId}>
 						<Stats>
 							<div className="rating">

@@ -5,7 +5,7 @@ export const fadeIn = {
 	show: {
 		opacity: 1,
 		transition: {
-			duration: 1
+			duration: 1.25
 		},
 		exit: {
 			opacity: 0,
@@ -23,11 +23,11 @@ export const popup = {
 		opacity: 1,
 		scale: 1,
 		transition: {
-			duration: 3
+			duration: 1
 		},
 		exit: {
 			opacity: 0,
-			transition: { duration: 1.5 }
+			transition: { duration: 1 }
 		}
 	}
 };
