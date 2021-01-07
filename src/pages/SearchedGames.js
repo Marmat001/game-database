@@ -15,23 +15,23 @@ export default function NewGames() {
 
 	useEffect(
 		() => {
-			getLocaltodos();
+			getLocalGames();
 		},
 		[ searched ]
 	);
 
 	useEffect(
 		() => {
-			saveLocalTodos();
+			saveLocalGames();
 		},
 		[ searched ]
 	);
 
-	const saveLocalTodos = () => {
+	const saveLocalGames = () => {
 		localStorage.setItem('searched', JSON.stringify(searched));
 	};
 
-	const getLocaltodos = () => {
+	const getLocalGames = () => {
 		JSON.parse(localStorage.getItem('searched'));
 	};
 

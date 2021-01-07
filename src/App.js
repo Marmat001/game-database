@@ -7,12 +7,15 @@ import NewGames from './pages/NewGames';
 import UpcomingGames from './pages/UpcomingGames';
 import PopularGames from './pages/PopularGames';
 
+import ScrollTop from './components/ScrollTop';
+
 function App() {
 	const location = useLocation();
 
 	return (
 		<div className="App">
 			<GlobalStyles />
+			<ScrollTop />
 			<Nav />
 			<Switch location={location} key={location.pathname}>
 				<Route exact path="/">
