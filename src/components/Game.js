@@ -19,9 +19,9 @@ export default function Game({ name, released, image, id }) {
 
 	return (
 		<StyledGame
-			variants={popup}
-			initial="hidden"
-			animate="show"
+			// variants={popup}
+			// initial="hidden"
+			// animate="show"
 			layoutId={stringPathId}
 			onClick={loadDetailHandler}
 		>

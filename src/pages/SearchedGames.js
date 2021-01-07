@@ -13,15 +13,13 @@ export default function NewGames() {
 		history.push('/');
 	};
 
-	useEffect(
-		() => {
-			getLocalGames();
-		},
-		[ searched ]
-	);
+	window.onunload = function() {
+		window.scrollTo(0, 0);
+	};
 
 	useEffect(
 		() => {
+			getLocalGames();
 			saveLocalGames();
 		},
 		[ searched ]
