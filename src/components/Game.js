@@ -8,9 +8,12 @@ import { smallImage } from '../utils';
 import { popup } from '../animations';
 import NoImage from '../img/NoImage.png';
 
+import { useLocation } from 'react-router-dom';
+
 export default function Game({ name, released, image, id }) {
 	const stringPathId = id.toString();
 	const dispatch = useDispatch();
+	const location = useLocation();
 
 	const loadDetailHandler = () => {
 		document.body.style.overflow = 'hidden';
@@ -25,7 +28,7 @@ export default function Game({ name, released, image, id }) {
 			layoutId={stringPathId}
 			onClick={loadDetailHandler}
 		>
-			<Link to={`/game/${id}`}>
+			<Link to={`${location.pathname}/game/${id}`}>
 				<motion.h3 layoutId={`title ${stringPathId}`}>{name}</motion.h3>
 				<p>{released}</p>
 				<motion.img

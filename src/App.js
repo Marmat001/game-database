@@ -36,8 +36,8 @@ function App() {
 					<PopularGames />
 				</Route>
 
-				<Route path={[ '/game/:id', '/' ]}>
-					<GameDetail />
+				<Route path={[ 'popular-games/game/:id', '/' ]}>
+					<PopularGames />
 				</Route>
 			</Switch>
 		</div>
