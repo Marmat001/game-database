@@ -5,10 +5,12 @@ export default function ScrollTop() {
 	const { pathname } = useLocation();
 	useEffect(
 		() => {
-			window.scroll({
-				top: 0,
-				left: 0
-			});
+			if (!pathname.includes('game/')) {
+				window.scroll({
+					top: 0,
+					left: 0
+				});
+			}
 		},
 		[ pathname ]
 	);

@@ -22,21 +22,19 @@ function App() {
 				<Route exact path="/">
 					<FirstPage />
 				</Route>
-				<Route exact path="/searched-games">
+				<Route path={[ 'searched-games/game/:id', '/searched-games' ]}>
 					<SearchedGames />
 				</Route>
-				<Route exact path="/new-games">
+
+				<Route path={[ 'new-games/game/:id', '/new-games' ]}>
 					<NewGames />
 				</Route>
-				<Route exact path="/upcoming-games">
+
+				<Route path={[ 'upcoming-games/game/:id', '/upcoming-games' ]}>
 					<UpcomingGames />
 				</Route>
 
-				<Route exact path="/popular-games">
-					<PopularGames />
-				</Route>
-
-				<Route path={[ 'popular-games/game/:id', '/' ]}>
+				<Route path={[ 'popular-games/game/:id', '/popular-games' ]}>
 					<PopularGames />
 				</Route>
 			</Switch>

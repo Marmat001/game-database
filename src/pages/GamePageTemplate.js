@@ -27,7 +27,7 @@ export default function GamePageTemplate({ gameGenre, title, fetchGames, isBuffe
 		<div>
 			{isBuffering && <LoadingMessage>Loading Results...</LoadingMessage>}
 			{!isBuffering && (
-				<GameList variants={fadeIn} initial="hidden" animate="show">
+				<GameList>
 					<AnimateSharedLayout type="crossfade">
 						<AnimatePresence>{pathId && <GameDetail pathId={pathId} />}</AnimatePresence>
 						<h2>{title}</h2>

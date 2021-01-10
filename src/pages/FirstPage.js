@@ -23,6 +23,10 @@ const FirstPage = () => {
 		setTextInput(e.target.value);
 	};
 
+	window.onunload = function() {
+		window.scrollTo(0, 0);
+	};
+
 	const particlesOptions = {
 		particles: {
 			number: {

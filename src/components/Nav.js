@@ -38,7 +38,7 @@ const Nav = () => {
 					<Line
 						transition={{ duration: 0.75 }}
 						initial={{ width: '0%' }}
-						animate={{ width: pathname === '/new-games' ? '55%' : '0%' }}
+						animate={{ width: pathname.includes(`/new-games`) ? '55%' : '0%' }}
 					/>
 				</li>
 				<li>
@@ -52,7 +52,7 @@ const Nav = () => {
 					<Line
 						transition={{ duration: 0.75 }}
 						initial={{ width: '0%' }}
-						animate={{ width: pathname === '/upcoming-games' ? '50%' : '0%' }}
+						animate={{ width: pathname.includes('/upcoming-games') ? '50%' : '0%' }}
 					/>
 				</li>
 				<li>
@@ -66,7 +66,7 @@ const Nav = () => {
 					<Line
 						transition={{ duration: 0.75 }}
 						initial={{ width: '0%' }}
-						animate={{ width: pathname === '/popular-games' ? '50%' : '0%' }}
+						animate={{ width: pathname.includes('/popular-games') ? '50%' : '0%' }}
 					/>
 				</li>
 			</ul>
