@@ -75,7 +75,7 @@ export default function GameDetail({ pathId }) {
 
 	const { screen, game, isLoading } = useSelector((state) => state.detail);
 
-	console.log(game.metacritic)
+
 
 	useEffect(() => {
 		if (!pathname.includes('game/')) {

@@ -4,13 +4,14 @@ export const fadeIn = {
 	},
 	show: {
 		opacity: 1,
+		y: 0,
 		transition: {
 			duration: 1.25
-		},
-		exit: {
-			opacity: 0,
-			transition: { duration: 0.75 }
 		}
+	},
+	exit: {
+		opacity: 0,
+		transition: { duration: 0.75 }
 	}
 };
 
@@ -24,10 +25,10 @@ export const popup = {
 		scale: 1,
 		transition: {
 			duration: 1
-		},
-		exit: {
-			opacity: 0,
-			transition: { duration: 1 }
 		}
+	},
+	exit: {
+		opacity: 0,
+		transition: { duration: 1 }
 	}
 };
