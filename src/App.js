@@ -9,6 +9,7 @@ import PopularGames from './pages/PopularGames';
 
 import ScrollTop from './components/ScrollTop';
 import GameDetail from './components/GameDetail';
+import Game from './components/Game';
 
 function App() {
 	const location = useLocation();
@@ -22,20 +23,29 @@ function App() {
 				<Route exact path="/">
 					<FirstPage />
 				</Route>
-				<Route path={[ 'searched-games/game/:id', '/searched-games' ]}>
+				<Route exact path="/searched-games">
 					<SearchedGames />
 				</Route>
-
-				<Route path={[ 'new-games/game/:id', '/new-games' ]}>
+				<Route exact path="/new-games">
 					<NewGames />
 				</Route>
-
-				<Route path={[ 'upcoming-games/game/:id', '/upcoming-games' ]}>
+				<Route exact path="/upcoming-games">
 					<UpcomingGames />
 				</Route>
 
-				<Route path={[ 'popular-games/game/:id', '/popular-games' ]}>
+				<Route exact path="/popular-games">
 					<PopularGames />
+				</Route>
+
+				<Route
+					path={[
+						'/searched-games/game/:id',
+						'/new-games/game/:id',
+						'/upcoming-games/game/:id',
+						'/popular-games/game/:id'
+					]}
+				>
+					<GameDetail />
 				</Route>
 			</Switch>
 		</div>

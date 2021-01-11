@@ -18,26 +18,25 @@ export default function Game({ name, released, image, id }) {
 	const history = useHistory();
 
 	const loadDetailHandler = () => {
-		document.body.style.overflow = 'hidden';
 		dispatch(loadDetail(id));
 	};
 
 	return (
 		<StyledGame
-			// variants={fadeIn}
-			// initial="hidden"
-			// animate="show"
+			variants={fadeIn}
+			initial="hidden"
+			animate="show"
 			layoutId={stringPathId}
 			onClick={loadDetailHandler}
 		>
 			<Link to={`${location.pathname}/game/${id}`}>
-				<motion.h3 layoutId={`title ${stringPathId}`}>{name}</motion.h3>
-				<p>{released}</p>
 				<motion.img
 					layoutId={`image ${stringPathId}`}
 					src={image === null ? smallImage(NoImage, 640) : smallImage(image, 640)}
 					alt={name}
 				/>
+				<motion.h3 layoutId={`title ${stringPathId}`}>{name}</motion.h3>
+				<p>Release Date: {released}</p>
 			</Link>
 		</StyledGame>
 	);
@@ -55,5 +54,14 @@ const StyledGame = styled(motion.div)`
 		width: 100%;
 		height: 40vh;
 		object-fit: cover;
+	}
+
+	h3 {
+		color: black;
+	}
+
+	p {
+		color: black;
+		margin-bottom: 1rem;
 	}
 `;

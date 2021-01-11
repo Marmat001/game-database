@@ -1,7 +1,7 @@
 const initialState = {
-	game: { platforms: [] },
-	screen: { results: [] },
-	isLoading: true
+	game: JSON.parse(localStorage.getItem('game')) || [] ,
+	screen: JSON.parse(localStorage.getItem('screen')) || [],
+	isLoading: 'game'.length ? false : true
 };
 
 const detailReducer = (state = initialState, action) => {
