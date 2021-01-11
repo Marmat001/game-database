@@ -1,5 +1,5 @@
 const initialState = {
-	game: JSON.parse(localStorage.getItem('game')) || [] ,
+	game: JSON.parse(localStorage.getItem('game')) || [],
 	screen: JSON.parse(localStorage.getItem('screen')) || [],
 	isLoading: 'game'.length ? false : true
 };

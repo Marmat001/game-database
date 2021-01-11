@@ -75,6 +75,8 @@ export default function GameDetail({ pathId }) {
 
 	const { screen, game, isLoading } = useSelector((state) => state.detail);
 
+	console.log(game.metacritic)
+
 	useEffect(() => {
 		if (!pathname.includes('game/')) {
 			getLocalGames();
@@ -107,7 +109,8 @@ export default function GameDetail({ pathId }) {
 								<motion.h3 style={{ fontSize: '2.5rem' }} layoutId={`title ${pathId}`}>
 									{game.name}
 								</motion.h3>
-								<p>Rating: {game.rating}</p>
+								<p style={{color: "lightgreen"}}>{game.metacritic === null ? "" : `Metascore: ${game.metacritic}` }</p>
+								<p>{game.rating === 0 ? "Not Rated Yet" : `Rating: ${game.rating}` }</p>
 								{getStars()}
 							</div>
 							<Info>
@@ -134,11 +137,11 @@ export default function GameDetail({ pathId }) {
 						<Description>
 							<p>{game.description_raw}</p>
 						</Description>
-						<div className="gallery">
+						<Gallery>
 							{screen.results?.map((screen) => (
 								<img src={smallImage(screen.image, 1280)} key={screen.id} alt="game" />
 							))}
-						</div>
+						</Gallery>
 					</Detail>
 				</CardShadow>
 			)}
@@ -162,7 +165,7 @@ const Detail = styled(motion.div)`
   border-radius: 1rem;
   padding: 2rem 5rem;
   position: absolute;
-  left: 10%;
+  left: 9%;
   color: white;
   z-index: 10;
   img {
@@ -200,6 +203,16 @@ const Media = styled(motion.div)`
   margin-top: 5rem;
   img {
     width: 100%;
+	border-radius: 15px;
+  }
+`;
+
+
+
+const Gallery = styled(motion.div)`
+  img {
+	  margin-bottom: 1rem;
+	  border-radius: 10px;
   }
 `;
 
