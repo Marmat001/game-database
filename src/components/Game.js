@@ -10,6 +10,7 @@ import NoImage from '../img/NoImage.png';
 
 import { useLocation } from 'react-router-dom';
 
+
 export default function Game({ name, released, image, id }) {
 	const stringPathId = id.toString();
 	const dispatch = useDispatch();

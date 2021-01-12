@@ -9,7 +9,7 @@ import PopularGames from './pages/PopularGames';
 
 import ScrollTop from './components/ScrollTop';
 import GameDetail from './components/GameDetail';
-import Game from './components/Game';
+
 
 function App() {
 	const location = useLocation();

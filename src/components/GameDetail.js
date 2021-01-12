@@ -4,6 +4,8 @@ import { motion } from 'framer-motion';
 import { useSelector } from 'react-redux';
 import { useHistory, useLocation } from 'react-router-dom';
 import { smallImage } from '../utils';
+import { v4 as uuidv4 } from 'uuid';
+
 
 import playstation from '../img/playstation.svg';
 import steam from '../img/steam.svg';
@@ -12,22 +14,18 @@ import nintendo from '../img/nintendo.svg';
 import apple from '../img/apple.svg';
 import gamepad from '../img/gamepad.svg';
 //Star Images
-import starEmpty from '../img/star-empty.png';
-import starFull from '../img/star-full.png';
 
-import { fadeIn, popup } from '../animations';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {  faStar, faStarHalfAlt } from '@fortawesome/free-solid-svg-icons';
+
+import { popup } from '../animations';
 
 export default function GameDetail({ pathId }) {
 	const history = useHistory();
 	const { pathname } = useLocation();
 
-	// const exitDetailHandler = (e) => {
-	// 	const element = e.target;
-	// 	if (element.classList.contains('shadow')) {
-	// 		document.body.style.overflow = 'auto';
-	// 		history.goBack();
-	// 	}
-	// };
+	
 
 
 
@@ -46,12 +44,13 @@ export default function GameDetail({ pathId }) {
 	const getStars = () => {
 		const stars = [];
 		const rating = Math.floor(game.rating);
-		for (let i = 1; i <= 5; i++) {
+		const decimalRating = game.rating - rating;
+		for (let i = 1; i <= rating + 1; i++) {
 			if (i <= rating) {
-				stars.push(<img style={{ color: 'white ' }} alt="star" key={i} src={starFull} />);
-			} else {
-				stars.push(<img alt="star" key={i} src={starEmpty} />);
-			}
+				stars.push(<FontAwesomeIcon key={uuidv4()} style={{color: "#f03000"}} icon={faStar} size="2x" alt="logo" />);
+			} else if (decimalRating > 0.25) {
+				stars.push(<FontAwesomeIcon key={uuidv4()} style={{color: "#f03000"}} icon={faStarHalfAlt} size="2x" alt="logo" />);
+			} 
 		}
 		return stars;
 	};
@@ -98,9 +97,6 @@ export default function GameDetail({ pathId }) {
 					variants={popup}
 					initial="hidden"
 					animate="show"
-					// variants={fadeIn}
-					// initial="hidden"
-					// animate="show"
 					className="shadow"
 				>
 					<Detail layoutId={pathId}>
