@@ -16,7 +16,7 @@ import gamepad from '../img/gamepad.svg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar, faStarHalfAlt } from '@fortawesome/free-solid-svg-icons';
 
-import { fadeIn, popup } from '../animations';
+import { popup } from '../animations';
 
 export default function GameDetail({ pathId }) {
 	const { pathname } = useLocation();
@@ -120,7 +120,7 @@ export default function GameDetail({ pathId }) {
 									<p style={{ color: 'lightgreen' }}>
 										{game.metacritic === null ? '' : `Metascore: ${game.metacritic}`}
 									</p>
-									<p>{game.rating === 0 ? 'Not Rated Yet' : `Rating: ${game.rating}`}</p>
+									<p>{game.rating === 0 ? 'No Ratings' : `Rating: ${game.rating}`}</p>
 									{getStars()}
 								</div>
 								<Info>
@@ -259,7 +259,7 @@ const PopUp = styled(motion.div)`
   min-height: 100vh;
   overflow-y: scroll;
   background: rgba(0, 0, 0, 0.5);
-  margin-top: 3rem;
+  margin-top: 3.9rem;
   position: fixed;
   top: 0;
   left: 0;
