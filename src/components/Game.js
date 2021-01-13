@@ -1,22 +1,19 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { useDispatch } from 'react-redux';
 import { loadDetail } from '../actions/detailAction';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { smallImage } from '../utils';
 import { fadeIn } from '../animations';
 import NoImage from '../img/NoImage.png';
 
 import { useLocation } from 'react-router-dom';
 
-
 export default function Game({ name, released, image, id }) {
 	const stringPathId = id.toString();
 	const dispatch = useDispatch();
 	const location = useLocation();
-
-	const history = useHistory();
 
 	const loadDetailHandler = () => {
 		dispatch(loadDetail(id));

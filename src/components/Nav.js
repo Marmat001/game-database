@@ -84,7 +84,7 @@ const StyledNav = styled.nav`
 	background: #747cf5;
 	position: sticky;
 	top: 0;
-	z-index: 10;
+	z-index: 100;
 	a {
 		color: white;
 		text-decoration: none;

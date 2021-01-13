@@ -6,7 +6,6 @@ import Game from '../components/Game';
 import styled from 'styled-components';
 import { motion, AnimatePresence, AnimateSharedLayout } from 'framer-motion';
 import { useLocation } from 'react-router-dom';
-import { fadeIn } from '../animations';
 import { useDispatch } from 'react-redux';
 
 export default function GamePageTemplate({ gameGenre, title, fetchGames, isBuffering }) {
