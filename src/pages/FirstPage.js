@@ -8,7 +8,7 @@ import { faDatabase } from '@fortawesome/free-solid-svg-icons';
 
 import { fetchSearch } from '../actions/gamesAction';
 import { useDispatch } from 'react-redux';
-import { fadeIn } from '../animations';
+import { revealIn } from '../animations';
 import Particles from 'react-particles-js';
 
 import { useHistory } from 'react-router-dom';
@@ -22,10 +22,6 @@ const FirstPage = () => {
 	const inputHandler = (e) => {
 		setTextInput(e.target.value);
 	};
-
-	// window.onunload = function() {
-	// 	window.scrollTo(0, 0);
-	// };
 
 	const particlesOptions = {
 		particles: {
@@ -50,18 +46,16 @@ const FirstPage = () => {
 	};
 
 	return (
-		<StyledContainer variants={fadeIn} initial="hidden" animate="show">
+		<StyledContainer variants={revealIn} initial="hidden" animate="show">
 			<Particles style={particlesStyle} params={particlesOptions} />
 			<Logo>
 				<FontAwesomeIcon icon={faDatabase} size="8x" alt="logo" />
 				<h1>Internet Game Database </h1>
 			</Logo>
-			<form className="search" style={{ zIndex: 2 }}>
-				<input value={textInput} onChange={inputHandler} type="text" />
-				<button onClick={submitSearch} type="submit">
-					Submit
-				</button>
-			</form>
+			<form style={{ zIndex: 2, display: 'flex', justifyContent: 'center' }}>
+				<input type="text" value={textInput} onChange={inputHandler} />
+				<button onClick={submitSearch}>Search</button>
+			</form>;
 		</StyledContainer>
 	);
 };
@@ -73,28 +67,43 @@ text-align: center;
 display: flex;
 flex-direction: column;
 justify-content: center;
-
-
-
-
+align-items: center;
 
 input {
-  width: 30%;
-  font-size: 1.5rem;
-  padding: 0.5rem;
-  border: none;
-  margin-top: 1rem;
-  box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.2);
-
+ font-size: 1.5rem;
+ padding: .5rem;
+ width: 70%;
 }
+
 button {
   font-size: 1.5rem;
   border: none;
-  padding: 0.5rem 2rem;
   cursor: pointer;
   background: #747CF5;
   color: white;
+  width: 25%;
 
+ transition: all .2s ease-in-out; 
+
+ :hover { 
+	 transform: scale(1.1); 
+	    }
+}
+
+form {
+  display: flex;
+  justify-content: center;
+  width: 50vw;
+  background:
+  radial-gradient(circle farthest-side at 0% 50%,#fb1 23.5%,rgba(240,166,17,0) 0)21px 30px,
+  radial-gradient(circle farthest-side at 0% 50%,#B71 24%,rgba(240,166,17,0) 0)19px 30px,
+  linear-gradient(#fb1 14%,rgba(240,166,17,0) 0, rgba(240,166,17,0) 85%,#fb1 0)0 0,
+  linear-gradient(150deg,#fb1 24%,#B71 0,#B71 26%,rgba(240,166,17,0) 0,rgba(240,166,17,0) 74%,#B71 0,#B71 76%,#fb1 0)0 0,
+  linear-gradient(30deg,#fb1 24%,#B71 0,#B71 26%,rgba(240,166,17,0) 0,rgba(240,166,17,0) 74%,#B71 0,#B71 76%,#fb1 0)0 0,
+  linear-gradient(90deg,#B71 2%,#fb1 0,#fb1 98%,#B71 0%)0 0 #fb1;
+  background-size:40px 60px;
+  padding: 1rem;
+  box-shadow: 0 0 5px 5px  #fb1 ;
 }
 `;
 
@@ -108,6 +117,7 @@ padding: 1rem;
 h1 {
   color: white;
   font-size: 2rem;
+  margin-bottom: 3rem;
  
 }
 svg {

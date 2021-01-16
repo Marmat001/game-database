@@ -1,10 +1,7 @@
 import axios from 'axios';
 import { popularGamesURL, upcomingGamesURL, newGamesURL, searchGameURL } from '../api';
 
-//Action Creator
-
 export const loadPopular = () => async (dispatch) => {
-	//FETCH AXIOS
 	const popularData = await axios.get(popularGamesURL());
 	dispatch({
 		type: 'FETCH_POPULAR',
@@ -15,7 +12,6 @@ export const loadPopular = () => async (dispatch) => {
 };
 
 export const loadUpcoming = () => async (dispatch) => {
-	//FETCH AXIOS
 	const upcomingData = await axios.get(upcomingGamesURL());
 	dispatch({
 		type: 'FETCH_UPCOMING',
@@ -26,8 +22,6 @@ export const loadUpcoming = () => async (dispatch) => {
 };
 
 export const loadNew = () => async (dispatch) => {
-	//FETCH AXIOS
-
 	const newGamesData = await axios.get(newGamesURL());
 
 	dispatch({

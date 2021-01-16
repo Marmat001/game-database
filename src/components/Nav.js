@@ -2,39 +2,21 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { useLocation, useHistory } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 const Nav = () => {
 	const { pathname } = useLocation();
-	const history = useHistory();
 
-	const exitDetailHandler = (event, url) => {
-		if (event.classList.contains('shadow')) {
-			document.body.style.overflow = 'auto';
-			history.push('url');
-		}
-	};
 	return (
 		<StyledNav>
 			<h1>
-				<Link
-					onClick={(event) => exitDetailHandler((event = event.target), '/')}
-					className="shadow"
-					id="logo"
-					to="/"
-				>
+				<Link id="logo" to="/">
 					The Ultimate Search Experience
 				</Link>
 			</h1>
 			<ul>
 				<li>
-					<Link
-						onClick={(event) => exitDetailHandler((event = event.target), '/new-games')}
-						className="shadow"
-						to="/new-games"
-					>
-						New Games
-					</Link>
+					<Link to="/new-games">New Games</Link>
 					<Line
 						transition={{ duration: 0.75 }}
 						initial={{ width: '0%' }}
@@ -42,13 +24,7 @@ const Nav = () => {
 					/>
 				</li>
 				<li>
-					<Link
-						onClick={(event) => exitDetailHandler((event = event.target), '/upcoming-games')}
-						className="shadow"
-						to="/upcoming-games"
-					>
-						Upcoming Games
-					</Link>
+					<Link to="/upcoming-games">Upcoming Games</Link>
 					<Line
 						transition={{ duration: 0.75 }}
 						initial={{ width: '0%' }}
@@ -56,13 +32,7 @@ const Nav = () => {
 					/>
 				</li>
 				<li>
-					<Link
-						onClick={(event) => exitDetailHandler((event = event.target), '/popular-games')}
-						className="shadow"
-						to="/popular-games"
-					>
-						Popular Games
-					</Link>
+					<Link to="/popular-games">Popular Games</Link>
 					<Line
 						transition={{ duration: 0.75 }}
 						initial={{ width: '0%' }}
@@ -102,20 +72,53 @@ const StyledNav = styled.nav`
 		padding-left: 10rem;
 		position: relative;
 	}
+
+	@media (max-width: 1460px) {
+		#logo {
+			font-size: 1rem;
+		}
+
+		li {
+			font-size: 0.9rem;
+		}
+	}
+
 	@media (max-width: 1300px) {
 		flex-direction: column;
-		padding: 2rem 1rem;
+		padding: 1rem 0rem;
 		#logo {
 			display: inline-block;
-			margin: 1rem;
 		}
 		ul {
-			padding: 2rem;
+			padding: 1rem;
 			justify-content: space-around;
 			width: 100%;
 			li {
 				padding: 0;
 			}
+		}
+	}
+
+	@media (max-width: 600px) {
+		padding: 0;
+		#logo {
+			font-size: .8rem;
+		}
+
+		ul {
+			li {
+				font-size: 0.8rem;
+			}
+		}
+	}
+
+	@media (max-width: 400px) {
+		#logo {
+			font-size: .6rem;
+		}
+
+		li {
+			font-size: 0.7rem;
 		}
 	}
 `;

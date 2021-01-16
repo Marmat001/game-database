@@ -4,8 +4,8 @@ import { motion } from 'framer-motion';
 import { useDispatch } from 'react-redux';
 import { loadDetail } from '../actions/detailAction';
 import { Link } from 'react-router-dom';
-import { smallImage } from '../utils';
-import { fadeIn } from '../animations';
+import { smallerImage } from '../utils';
+import { revealIn } from '../animations';
 import NoImage from '../img/NoImage.png';
 
 import { useLocation } from 'react-router-dom';
@@ -20,8 +20,8 @@ export default function Game({ name, released, image, id }) {
 	};
 
 	return (
-		<StyledGame
-			variants={fadeIn}
+		<GameContainer
+			variants={revealIn}
 			initial="hidden"
 			animate="show"
 			layoutId={stringPathId}
@@ -30,17 +30,17 @@ export default function Game({ name, released, image, id }) {
 			<Link to={`${location.pathname}/game/${id}`}>
 				<motion.img
 					layoutId={`image ${stringPathId}`}
-					src={image === null ? smallImage(NoImage, 640) : smallImage(image, 640)}
+					src={image === null ? smallerImage(NoImage, 640) : smallerImage(image, 640)}
 					alt={name}
 				/>
 				<motion.h3 layoutId={`title ${stringPathId}`}>{name}</motion.h3>
 				<p>Release Date: {released}</p>
 			</Link>
-		</StyledGame>
+		</GameContainer>
 	);
 }
 
-const StyledGame = styled(motion.div)`
+const GameContainer = styled(motion.div)`
 	min-height: 30vh;
 	box-shadow: 0px 5px 20px rgba(0,0,0,0.2);
 	text-align: center;

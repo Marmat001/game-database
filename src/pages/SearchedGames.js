@@ -13,25 +13,20 @@ export default function NewGames() {
 		history.push('/');
 	};
 
-	window.onunload = function() {
-		window.scrollTo(0, 0);
-	};
-
 	useEffect(
 		() => {
+			const saveLocalGames = () => {
+				localStorage.setItem('searched', JSON.stringify(searched));
+			};
+
+			const getLocalGames = () => {
+				JSON.parse(localStorage.getItem('searched'));
+			};
 			getLocalGames();
 			saveLocalGames();
 		},
 		[ searched ]
 	);
-
-	const saveLocalGames = () => {
-		localStorage.setItem('searched', JSON.stringify(searched));
-	};
-
-	const getLocalGames = () => {
-		JSON.parse(localStorage.getItem('searched'));
-	};
 
 	return (
 		<div>

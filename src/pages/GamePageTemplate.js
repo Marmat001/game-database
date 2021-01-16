@@ -53,6 +53,11 @@ const GameList = styled(motion.div)`
     h2 {
         padding: 5rem 0rem;
     }
+	/* @media (max-width: 1300px) {
+    display: block;
+    padding: 2rem 2rem;
+    text-align: center; */
+  }
 `;
 
 const Games = styled(motion.div)`

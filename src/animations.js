@@ -1,4 +1,4 @@
-export const fadeIn = {
+export const revealIn = {
 	hidden: {
 		opacity: 0
 	},
@@ -15,7 +15,7 @@ export const fadeIn = {
 	}
 };
 
-export const popup = {
+export const appear = {
 	hidden: {
 		opacity: 0,
 		scale: 0.2

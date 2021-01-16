@@ -2,8 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { useSelector } from 'react-redux';
-import { useLocation } from 'react-router-dom';
-import { smallImage } from '../utils';
+import { smallerImage } from '../utils';
 import { v4 as uuidv4 } from 'uuid';
 
 import playstation from '../img/playstation.svg';
@@ -16,27 +15,15 @@ import gamepad from '../img/gamepad.svg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar, faStarHalfAlt } from '@fortawesome/free-solid-svg-icons';
 
-import { popup } from '../animations';
+import { appear } from '../animations';
 
 export default function GameDetail({ pathId }) {
-	const { pathname } = useLocation();
-
 	const exitDetailHandler = (e) => {
 		const element = e.target;
 		if (element.classList.contains('shadow')) {
 			setZoomIn(false);
 			document.body.style.overflow = 'auto';
 		}
-	};
-
-	const saveLocalGames = () => {
-		localStorage.setItem('game', JSON.stringify(game));
-		localStorage.setItem('screen', JSON.stringify(screen));
-	};
-
-	const getLocalGames = () => {
-		JSON.parse(localStorage.getItem('game'));
-		JSON.parse(localStorage.getItem('screen'));
 	};
 
 	const getStars = () => {
@@ -84,25 +71,29 @@ export default function GameDetail({ pathId }) {
 
 	useEffect(
 		() => {
-			if (!pathname.includes('game/')) {
-				getLocalGames();
-			}
+			const getLocalGames = () => {
+				JSON.parse(localStorage.getItem('game'));
+				JSON.parse(localStorage.getItem('screen'));
+			};
+			getLocalGames();
 		},
 		[ game, screen ]
 	);
 
 	useEffect(
 		() => {
-			if (pathname.includes('game/')) {
-				saveLocalGames();
-			}
+			const saveLocalGames = () => {
+				localStorage.setItem('game', JSON.stringify(game));
+				localStorage.setItem('screen', JSON.stringify(screen));
+			};
+			saveLocalGames();
 		},
 		[ game, screen ]
 	);
 
 	const [ zoomIn, setZoomIn ] = useState(false);
 
-	const zoomInHandler = (e) => {
+	const zoomInHandler = () => {
 		setZoomIn(true);
 	};
 
@@ -110,7 +101,7 @@ export default function GameDetail({ pathId }) {
 		<div>
 			{!isLoading && (
 				<div>
-					<CardShadow variants={popup} initial="hidden" animate="show">
+					<CardContainer variants={appear} initial="hidden" animate="show">
 						<Detail layoutId={pathId}>
 							<Stats>
 								<div className="rating">
@@ -126,43 +117,51 @@ export default function GameDetail({ pathId }) {
 								<Info>
 									<h3>Platforms available</h3>
 									<Platforms>
-										{game.platforms.map((data) => (
-											<img
-												alt={data.platform.name}
-												key={data.platform.id}
-												src={getPlatform(data.platform.name)}
-											/>
-										))}
+										{!game.platforms.length ? (
+											'No Information Provided'
+										) : (
+											game.platforms.map((data) => (
+												<img
+													alt={data.platform.name}
+													key={data.platform.id}
+													src={getPlatform(data.platform.name)}
+												/>
+											))
+										)}
 									</Platforms>
 								</Info>
 							</Stats>
 
-							<Media>
-								<motion.img
-									layoutId={`image ${pathId}`}
-									src={smallImage(game.background_image, 1280)}
-									alt="image"
-								/>
-							</Media>
-							<Description>
+							<MainImage>
+								{game.background_image === null ? (
+									<h1>No Image Available</h1>
+								) : (
+									<motion.img
+										layoutId={`image ${pathId}`}
+										src={smallerImage(game.background_image, 1280)}
+										alt="image"
+									/>
+								)}
+							</MainImage>
+							<Information>
 								<p>{game.description_raw}</p>
-							</Description>
+							</Information>
 							<Gallery>
 								{screen.results.map((screen) => (
 									<img
 										onClick={zoomInHandler}
-										src={smallImage(screen.image, 1280)}
+										src={smallerImage(screen.image, 1280)}
 										key={screen.id}
 										alt="game"
 									/>
 								))}
 							</Gallery>
 						</Detail>
-					</CardShadow>
+					</CardContainer>
 
 					{zoomIn && (
 						<PopUp
-							variants={popup}
+							variants={appear}
 							initial="hidden"
 							animate="show"
 							className="shadow"
@@ -170,7 +169,7 @@ export default function GameDetail({ pathId }) {
 						>
 							<PopUpContent>
 								{screen.results.map((screen) => (
-									<img src={smallImage(screen.image, 1280)} key={screen.id} alt="game" />
+									<img src={smallerImage(screen.image, 1280)} key={screen.id} alt="game" />
 								))}
 							</PopUpContent>
 						</PopUp>
@@ -181,7 +180,7 @@ export default function GameDetail({ pathId }) {
 	);
 }
 
-const CardShadow = styled(motion.div)`
+const CardContainer = styled(motion.div)`
   width: 100%;
   min-height: 100vh;
   overflow-y: scroll;
@@ -230,12 +229,13 @@ const Platforms = styled(motion.div)`
   }
 `;
 
-const Media = styled(motion.div)`
+const MainImage = styled(motion.div)`
   margin-top: 5rem;
   img {
     width: 100%;
 	border-radius: 15px;
   }
+  text-align: center;
 `;
 
 const Gallery = styled(motion.div)`
@@ -250,8 +250,9 @@ img {
 }
 `;
 
-const Description = styled(motion.div)`
+const Information = styled(motion.div)`
   margin: 5rem 0rem;
+
 `;
 
 const PopUp = styled(motion.div)`
@@ -289,6 +290,4 @@ const PopUpContent = styled(motion.div)`
 	border-radius: 10px;
 	margin-bottom: 1rem;
   }
-		
-
 `;
