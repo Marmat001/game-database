@@ -4,7 +4,6 @@ export const revealIn = {
 	},
 	show: {
 		opacity: 1,
-		y: 0,
 		transition: {
 			duration: 1.25
 		}
@@ -30,5 +29,20 @@ export const appear = {
 	exit: {
 		opacity: 0,
 		transition: { duration: 1 }
+	}
+};
+
+export const bounce = {
+	hidden: {
+		opacity: 0,
+		x: '-100vw'
+	},
+	show: {
+		opacity: 1,
+		x: 0,
+		transition: {
+			type: 'spring',
+			delay: 0.25
+		}
 	}
 };

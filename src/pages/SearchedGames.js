@@ -75,4 +75,11 @@ const Button = styled.button`
 	cursor: pointer;
 	background: #747cf5;
 	color: white;
+	border-radius: 5%;
+
+	transition: all .2s ease-in-out;
+
+	:hover {
+		transform: scale(1.1);
+	}
 `;

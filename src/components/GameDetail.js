@@ -15,7 +15,7 @@ import gamepad from '../img/gamepad.svg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar, faStarHalfAlt } from '@fortawesome/free-solid-svg-icons';
 
-import { appear } from '../animations';
+import { appear, bounce } from '../animations';
 
 export default function GameDetail({ pathId }) {
 	const exitDetailHandler = (e) => {
@@ -101,8 +101,8 @@ export default function GameDetail({ pathId }) {
 		<div>
 			{!isLoading && (
 				<div>
-					<CardContainer variants={appear} initial="hidden" animate="show">
-						<Detail layoutId={pathId}>
+					<CardContainer>
+						<Detail variants={bounce} initial="hidden" animate="show" layoutId={pathId}>
 							<Stats>
 								<div className="rating">
 									<motion.h3 style={{ fontSize: '2.5rem' }} layoutId={`title ${pathId}`}>
@@ -120,7 +120,7 @@ export default function GameDetail({ pathId }) {
 										{!game.platforms.length ? (
 											'No Information Provided'
 										) : (
-											game.platforms.map((data) => (
+											game.platforms?.map((data) => (
 												<img
 													alt={data.platform.name}
 													key={data.platform.id}
@@ -147,7 +147,7 @@ export default function GameDetail({ pathId }) {
 								<p>{game.description_raw}</p>
 							</Information>
 							<Gallery>
-								{screen.results.map((screen) => (
+								{screen.results?.map((screen) => (
 									<img
 										onClick={zoomInHandler}
 										src={smallerImage(screen.image, 1280)}
@@ -218,6 +218,7 @@ const Stats = styled(motion.div)`
 const Info = styled(motion.div)`
   text-align: center;
 `;
+
 const Platforms = styled(motion.div)`
   display: flex;
   justify-content: space-evenly;
