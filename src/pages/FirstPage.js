@@ -72,7 +72,8 @@ const FirstPage = () => {
 				/>
 				<button onClick={submitSearch}>Search</button>
 			</form>;
-			{textInput && (
+			{textInput &&
+			searched.length && (
 				<Dropmenu>
 					{searched.map((game) => (
 						<DropDown name={game.name} id={game.id} image={game.background_image} key={game.id} />
@@ -150,7 +151,7 @@ margin-bottom: 2rem;
 
 const Dropmenu = styled(motion.div)`
   width: 40vw;
-  height: 40vh;
+  max-height: 40vh;
   overflow-y: scroll;
   z-index: 10;
   border: 4px double #FFC248;

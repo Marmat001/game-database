@@ -3,8 +3,6 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { smallerImage } from '../utils';
 import NoImage from '../img/NoImage.png';
-
-import { useLocation } from 'react-router-dom';
 import { loadDetail } from '../actions/detailAction';
 import { useDispatch } from 'react-redux';
 
@@ -12,15 +10,13 @@ export default function DropDown({ name, image, id }) {
 	const stringPathId = id.toString();
 	const dispatch = useDispatch();
 
-	const location = useLocation();
-
 	const loadDetailHandler = () => {
 		dispatch(loadDetail(id));
 	};
 
 	return (
 		<GameContainer onClick={loadDetailHandler}>
-			<Link to={`${location.pathname}/game/${id}`}>
+			<Link to={`/searched-games/game/${id}`}>
 				<img
 					layoutId={`image ${stringPathId}`}
 					src={image === null ? smallerImage(NoImage, 640) : smallerImage(image, 640)}
