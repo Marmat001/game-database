@@ -18,11 +18,11 @@ export default function DropDown({ name, image, id }) {
 		<GameContainer onClick={loadDetailHandler}>
 			<Link to={`/searched-games/game/${id}`}>
 				<img
-					layoutId={`image ${stringPathId}`}
+					layoutid={`image ${stringPathId}`}
 					src={image === null ? smallerImage(NoImage, 640) : smallerImage(image, 640)}
 					alt={name}
 				/>
-				<h3 layoutId={`title ${stringPathId}`}>{name}</h3>
+				<h3 layoutid={`title ${stringPathId}`}>{name}</h3>
 			</Link>
 		</GameContainer>
 	);
@@ -39,6 +39,7 @@ const GameContainer = styled.div`
 		width: 25%;
 		height: 100%;
 		object-fit: cover;
+		
 	}
 
 	h3 {

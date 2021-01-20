@@ -86,9 +86,9 @@ const StyledNav = styled.nav`
 	@media (max-width: 1300px) {
 		flex-direction: column;
 		padding: 1rem 0rem;
-		#logo {
+		/* #logo {
 			display: inline-block;
-		}
+		} */
 		ul {
 			padding: 1rem;
 			justify-content: space-around;
@@ -105,18 +105,12 @@ const StyledNav = styled.nav`
 			font-size: .8rem;
 		}
 
-		ul {
-			li {
-				font-size: 0.8rem;
-			}
+		li {
+			font-size: 0.8rem;
 		}
 	}
 
-	@media (max-width: 400px) {
-		#logo {
-			font-size: .6rem;
-		}
-
+	@media (max-width: 360px) {
 		li {
 			font-size: 0.7rem;
 		}

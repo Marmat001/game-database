@@ -31,7 +31,7 @@ export default function NewGames() {
 	return (
 		<div>
 			{isBuffering && <FetchingSearchMessage>Loading Results...</FetchingSearchMessage>}
-			{!isBuffering && searched.length && <GamePageTemplate gameGenre={searched} title="Searched Games" />}
+			{!isBuffering && searched.length > 0 && <GamePageTemplate gameGenre={searched} title="Searched Games" />}
 			{!isBuffering &&
 			!searched.length && (
 				<Container>
@@ -51,6 +51,10 @@ const FetchingSearchMessage = styled.h1`
 	justify-content: center;
 	align-items: center;
 	height: 80vh;
+
+	@media (max-width: 400px) {
+		font-size: 2rem;
+	}
 `;
 
 const Container = styled.div`
@@ -66,6 +70,10 @@ const Container = styled.div`
 const ErrorMessage = styled.h1`
 	font-size: 3rem;
 	margin-bottom: 2rem;
+
+	@media (max-width: 400px) {
+		font-size: 2rem;
+	}
 `;
 
 const Button = styled.button`

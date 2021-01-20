@@ -48,10 +48,20 @@ const GameContainer = styled(motion.div)`
 	cursor: pointer;
 	overflow: hidden;
 	background-color: white;
+
+
+	/* @media (max-width: 550px) {
+			width: 80vw;
+		} */
+
 	img {
 		width: 100%;
 		height: 40vh;
 		object-fit: cover;
+
+		@media (max-width: 550px) {
+			height: 30vh;
+		}
 	}
 
 	h3 {
@@ -62,4 +72,26 @@ const GameContainer = styled(motion.div)`
 		color: black;
 		margin-bottom: 1rem;
 	}
+
+	@media (max-width: 800px) {
+		h3 {
+			font-size: 1.1rem;
+			padding: 0.75rem;
+
+		}
+		p {
+			margin-bottom: 0rem;
+			font-size: 90%;
+		}
+  }
+
+  @media (max-width: 500px) {
+	h3 {
+		font-size: 1rem;
+		padding: 0.5rem;
+	}
+	p    {
+		font-size: 85%;
+		}
+}
 `;

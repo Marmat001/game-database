@@ -63,7 +63,7 @@ const FirstPage = () => {
 				<FontAwesomeIcon icon={faDatabase} size="8x" alt="logo" />
 				<h1>Internet Game Database </h1>
 			</Logo>
-			<form style={{ zIndex: 2, display: 'flex', justifyContent: 'center' }}>
+			<form>
 				<input
 					type="text"
 					value={textInput}
@@ -71,9 +71,8 @@ const FirstPage = () => {
 					placeholder="Type To Search"
 				/>
 				<button onClick={submitSearch}>Search</button>
-			</form>;
-			{textInput &&
-			searched.length && (
+			</form>
+			{textInput && (
 				<Dropmenu>
 					{searched.map((game) => (
 						<DropDown name={game.name} id={game.id} image={game.background_image} key={game.id} />
@@ -96,6 +95,12 @@ input {
  font-size: 1.5rem;
  padding: .5rem;
  width: 70%;
+
+ @media (max-width: 1200px) {
+	font-size: 1.2rem;
+	width: 100%;
+	
+	}
 }
 
 button {
@@ -111,12 +116,27 @@ button {
  :hover { 
 	 transform: scale(1.1); 
 	    }
+
+	@media (max-width: 1200px) {
+	font-size: 1.2rem;
+	padding: .5rem 1rem;
+	}
+
+	@media (max-width: 800px) {
+	width: 35%;	
+	}
+
+	@media (max-width: 400px) {
+	width: 50%;	
+	}
+
 }
 
 form {
   display: flex;
   justify-content: center;
   width: 40vw;
+  z-index: 5;
   background:
   radial-gradient(circle farthest-side at 0% 50%,#fb1 23.5%,rgba(240,166,17,0) 0)21px 30px,
   radial-gradient(circle farthest-side at 0% 50%,#B71 24%,rgba(240,166,17,0) 0)19px 30px,
@@ -127,7 +147,31 @@ form {
   background-size:40px 60px;
   padding: 1rem;
   box-shadow: 0 0 5px 5px  #fb1 ;
-}
+
+  @media (max-width: 1000px) {
+	  width: 50vw;
+	  flex-direction: column;
+	  align-items: center;
+	  justify-content: center;
+	
+	}
+
+	@media (max-width: 700px) {
+	  width: 60vw;
+	  flex-direction: column;
+	  align-items: center;
+	  justify-content: center;
+	
+	}
+
+	@media (max-width: 500px) {
+		width: 70vw;	
+	}
+
+	@media (max-width: 350px) {
+	width: 80vw;	
+	}
+} 
 `;
 
 const Logo = styled(motion.div)`
@@ -135,12 +179,28 @@ display: flex;
 justify-content: center;
 flex-direction: column;
 align-items: center;
-
+z-index: 8;
 padding: 1rem;
+width: 80vw;
 h1 {
   color: white;
   font-size: 2rem;
   margin-bottom: 3rem;
+
+  @media (max-width: 500px) {
+	font-size: 1.5rem;
+	}
+
+	@media (max-width: 400px) {
+	font-size: 1.2rem;
+	margin-bottom: 2rem;
+	}
+
+	@media (max-width: 300px) {
+	font-size: 1rem;
+	}
+
+
  
 }
 svg {
@@ -156,6 +216,12 @@ const Dropmenu = styled(motion.div)`
   z-index: 10;
   border: 4px double #FFC248;
 
+  @media (max-width: 1000px) {
+	  width: 50vw;
+	  /* width: 0%;
+	  height: 0%;
+	  opacity: 0; */
+	}
  
 `;
 
