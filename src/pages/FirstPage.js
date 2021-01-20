@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
@@ -7,21 +7,32 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDatabase } from '@fortawesome/free-solid-svg-icons';
 
 import { fetchSearch } from '../actions/gamesAction';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { revealIn } from '../animations';
 import Particles from 'react-particles-js';
 
 import { useHistory } from 'react-router-dom';
+import DropDown from '../components/DropDown';
 
 const FirstPage = () => {
+	const { searched } = useSelector((state) => state.games);
+
 	const dispatch = useDispatch();
 	const history = useHistory();
 
 	const [ textInput, setTextInput ] = useState('');
 
-	const inputHandler = (e) => {
-		setTextInput(e.target.value);
-	};
+	useEffect(
+		() => {
+			const delay = setTimeout(() => {
+				dispatch(fetchSearch(textInput));
+			}, 500);
+			return () => {
+				clearTimeout(delay);
+			};
+		},
+		[ textInput ]
+	);
 
 	const particlesOptions = {
 		particles: {
@@ -53,9 +64,21 @@ const FirstPage = () => {
 				<h1>Internet Game Database </h1>
 			</Logo>
 			<form style={{ zIndex: 2, display: 'flex', justifyContent: 'center' }}>
-				<input type="text" value={textInput} onChange={inputHandler} />
+				<input
+					type="text"
+					value={textInput}
+					onChange={(e) => setTextInput(e.target.value)}
+					placeholder="Type To Search"
+				/>
 				<button onClick={submitSearch}>Search</button>
 			</form>;
+			{textInput && (
+				<Dropmenu>
+					{searched.map((game) => (
+						<DropDown name={game.name} id={game.id} image={game.background_image} key={game.id} />
+					))}
+				</Dropmenu>
+			)}
 		</StyledContainer>
 	);
 };
@@ -63,11 +86,10 @@ const FirstPage = () => {
 const StyledContainer = styled(motion.nav)`
 height: 90vh;
 padding: 3rem 5rem;
-text-align: center;
 display: flex;
 flex-direction: column;
-justify-content: center;
 align-items: center;
+justify-content: center;
 
 input {
  font-size: 1.5rem;
@@ -123,8 +145,17 @@ h1 {
 svg {
 margin-bottom: 2rem;
   color: white;
-
 }
+`;
+
+const Dropmenu = styled(motion.div)`
+  width: 40vw;
+  height: 40vh;
+  overflow-y: scroll;
+  z-index: 10;
+  border: 4px double #FFC248;
+
+ 
 `;
 
 const particlesStyle = {
