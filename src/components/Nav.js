@@ -74,21 +74,11 @@ const StyledNav = styled.nav`
 	}
 
 	@media (max-width: 1460px) {
+		flex-direction: column;
+		padding: 1rem 0rem;
 		#logo {
 			font-size: 1rem;
 		}
-
-		li {
-			font-size: 0.9rem;
-		}
-	}
-
-	@media (max-width: 1300px) {
-		flex-direction: column;
-		padding: 1rem 0rem;
-		/* #logo {
-			display: inline-block;
-		} */
 		ul {
 			padding: 1rem;
 			justify-content: space-around;
@@ -99,18 +89,12 @@ const StyledNav = styled.nav`
 		}
 	}
 
-	@media (max-width: 600px) {
+	@media (max-width: 500px) {
 		padding: 0;
 		#logo {
 			font-size: .8rem;
 		}
 
-		li {
-			font-size: 0.8rem;
-		}
-	}
-
-	@media (max-width: 360px) {
 		li {
 			font-size: 0.7rem;
 		}
@@ -124,7 +108,7 @@ const Line = styled(motion.div)`
   position: absolute;
   bottom: -80%;
   left: 55%;
-  @media (max-width: 1300px) {
+  @media (max-width: 1460px) {
     left: 0%;
   }
 `;

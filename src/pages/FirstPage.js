@@ -123,12 +123,9 @@ button {
 	}
 
 	@media (max-width: 800px) {
-	width: 35%;	
+	width: 40%;	
 	}
 
-	@media (max-width: 400px) {
-	width: 50%;	
-	}
 
 }
 
@@ -149,14 +146,6 @@ form {
   box-shadow: 0 0 5px 5px  #fb1 ;
 
   @media (max-width: 1000px) {
-	  width: 50vw;
-	  flex-direction: column;
-	  align-items: center;
-	  justify-content: center;
-	
-	}
-
-	@media (max-width: 700px) {
 	  width: 60vw;
 	  flex-direction: column;
 	  align-items: center;
@@ -164,13 +153,11 @@ form {
 	
 	}
 
-	@media (max-width: 500px) {
-		width: 70vw;	
+	@media (max-width: 550px) {
+		width: 85vw;	
 	}
 
-	@media (max-width: 350px) {
-	width: 80vw;	
-	}
+
 } 
 `;
 
@@ -188,20 +175,10 @@ h1 {
   margin-bottom: 3rem;
 
   @media (max-width: 500px) {
-	font-size: 1.5rem;
-	}
-
-	@media (max-width: 400px) {
 	font-size: 1.2rem;
 	margin-bottom: 2rem;
 	}
 
-	@media (max-width: 300px) {
-	font-size: 1rem;
-	}
-
-
- 
 }
 svg {
 margin-bottom: 2rem;

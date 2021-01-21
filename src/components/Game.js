@@ -49,19 +49,17 @@ const GameContainer = styled(motion.div)`
 	overflow: hidden;
 	background-color: white;
 
-
-	/* @media (max-width: 550px) {
-			width: 80vw;
-		} */
-
 	img {
 		width: 100%;
 		height: 40vh;
 		object-fit: cover;
 
+
 		@media (max-width: 550px) {
-			height: 30vh;
+			height: 35vh;
+			
 		}
+
 	}
 
 	h3 {

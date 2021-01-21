@@ -33,11 +33,11 @@ export default function GameDetail({ pathId }) {
 		for (let i = 1; i <= rating + 1; i++) {
 			if (i <= rating) {
 				stars.push(
-					<FontAwesomeIcon key={uuidv4()} style={{ color: '#f03000' }} icon={faStar} size="2x" alt="logo" />
+					<FontAwesomeIcon className="star" key={uuidv4()} style={{ color: '#f03000' }} icon={faStar} size="2x" alt="logo" />
 				);
 			} else if (decimalRating > 0.25) {
 				stars.push(
-					<FontAwesomeIcon
+					<FontAwesomeIcon className="star"
 						key={uuidv4()}
 						style={{ color: '#f03000' }}
 						icon={faStarHalfAlt}
@@ -104,16 +104,16 @@ export default function GameDetail({ pathId }) {
 					<CardContainer>
 						<Detail variants={bounce} initial="hidden" animate="show" layoutId={pathId}>
 							<Stats>
-								<div className="rating">
-									<motion.h3 style={{ fontSize: '2.5rem' }} layoutId={`title ${pathId}`}>
+								<Rating>
+									<motion.h3 layoutId={`title ${pathId}`}>
 										{game.name}
 									</motion.h3>
-									<p style={{ color: 'lightgreen' }}>
+									<p>
 										{game.metacritic === null ? '' : `Metascore: ${game.metacritic}`}
 									</p>
 									<p>{game.rating === 0 ? 'No Ratings' : `Rating: ${game.rating}`}</p>
 									{getStars()}
-								</div>
+								</Rating>
 								<Info>
 									<h3>Platforms available</h3>
 									<Platforms>
@@ -201,6 +201,18 @@ const Detail = styled(motion.div)`
   img {
     width: 100%;
   }
+
+  @media (max-width: 900px) {
+	width: 90%;
+	left: 5%;
+	padding: 2rem 3rem;
+}
+
+@media (max-width: 600px) {
+	width: 100%;
+	left: 0%;
+	padding: 2rem 2rem;
+}
 `;
 
 const Stats = styled(motion.div)`
@@ -213,7 +225,46 @@ const Stats = styled(motion.div)`
     height: 2rem;
     display: inline;
   }
+
+  @media (max-width: 1350px) {
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+@media (max-width: 500px) {
+	margin-top: 2rem;
+}
 `;
+
+const Rating = styled(motion.div)`
+	h3 {
+		font-size: 2.5rem;
+	}
+
+	p {
+		color: lightgreen;
+	}
+
+	@media (max-width: 1350px) {
+		h3 {
+			font-size: 2rem;
+		}
+
+	}
+		
+		@media (max-width: 500px) {
+			h3 {
+			font-size: 1.5rem;
+		}
+
+		.star {
+			font-size: 1.1rem;
+		}
+
+	}
+
+`
 
 const Info = styled(motion.div)`
   text-align: center;
@@ -222,12 +273,21 @@ const Info = styled(motion.div)`
 const Platforms = styled(motion.div)`
   display: flex;
   justify-content: space-evenly;
-  img {
-    margin-left: 3rem;
+
+  img {  
 	border: 1px solid white;
 	background-color: white;
 	border-radius: 25px;
   }
+
+  img:not(:first-child){
+	margin-left: 3rem;  
+
+	@media (max-width: 500px) {
+	margin-left: 1.5rem;
+}
+  }
+
 `;
 
 const MainImage = styled(motion.div)`
@@ -237,6 +297,10 @@ const MainImage = styled(motion.div)`
 	border-radius: 15px;
   }
   text-align: center;
+
+  @media (max-width: 700px) {
+	margin-top: 2rem;
+}
 `;
 
 const Gallery = styled(motion.div)`
@@ -249,11 +313,30 @@ img {
 	margin-bottom: 1rem;
 	  border-radius: 10px;
 }
+
+@media (max-width: 750px) {
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	grid-row-gap: 3rem;
+}
+
+@media (max-width: 500px) {
+	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+	grid-row-gap: 1.5rem;
+}
 `;
 
 const Information = styled(motion.div)`
   margin: 5rem 0rem;
 
+  @media (max-width: 900px) {
+	p {
+		font-size: 1rem;
+	}
+}
+
+@media (max-width: 500px) {
+	margin: 2rem 0rem;
+}
 `;
 
 const PopUp = styled(motion.div)`
@@ -278,7 +361,7 @@ const PopUp = styled(motion.div)`
 `;
 
 const PopUpContent = styled(motion.div)`
-	 width: 80%;
+  width: 80%;
   border-radius: 1rem;
   padding: 2rem 5rem;
   background: white;
@@ -290,5 +373,19 @@ const PopUpContent = styled(motion.div)`
     width: 100%;
 	border-radius: 10px;
 	margin-bottom: 1rem;
+  }
+
+  @media (max-width: 900px) {
+	width: 90%;
+	left: 5%;
+	padding: 1rem 3rem;
+  }
+
+  @media (max-width: 600px) {
+	padding: 1rem 2rem;
+  }
+
+  @media (max-width: 400px) {
+	padding: 1rem 1rem;
   }
 `;
