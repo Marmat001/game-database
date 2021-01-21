@@ -39,7 +39,6 @@ const GameContainer = styled.div`
 		width: 25%;
 		height: 100%;
 		object-fit: cover;
-		
 	}
 
 	h3 {

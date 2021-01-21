@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
@@ -21,11 +21,18 @@ const FirstPage = () => {
 	const history = useHistory();
 
 	const [ textInput, setTextInput ] = useState('');
+	const [ popupVisibility, setPopupVisibility ] = useState(true);
 
 	useEffect(
 		() => {
 			const delay = setTimeout(() => {
-				dispatch(fetchSearch(textInput));
+				if (textInput.length) {
+					dispatch(fetchSearch(textInput));
+					setPopupVisibility(true);
+				} else if (!textInput.length) {
+					setPopupVisibility(false);
+					dispatch({ type: 'CLEAR_SEARCHED' });
+				}
 			}, 500);
 			return () => {
 				clearTimeout(delay);
@@ -56,14 +63,21 @@ const FirstPage = () => {
 		}
 	};
 
+	const exitHandler = (e) => {
+		const element = e.target;
+		if (!element.classList.contains('form')) {
+			setPopupVisibility(false);
+		}
+	};
+
 	return (
-		<StyledContainer variants={revealIn} initial="hidden" animate="show">
+		<StyledContainer onClick={exitHandler} variants={revealIn} initial="hidden" animate="show">
 			<Particles style={particlesStyle} params={particlesOptions} />
 			<Logo>
 				<FontAwesomeIcon icon={faDatabase} size="8x" alt="logo" />
 				<h1>Internet Game Database </h1>
 			</Logo>
-			<form>
+			<form className="form">
 				<input
 					type="text"
 					value={textInput}
@@ -72,7 +86,9 @@ const FirstPage = () => {
 				/>
 				<button onClick={submitSearch}>Search</button>
 			</form>
-			{textInput && (
+			{textInput &&
+			searched.length > 0 &&
+			popupVisibility && (
 				<Dropmenu>
 					{searched.map((game) => (
 						<DropDown name={game.name} id={game.id} image={game.background_image} key={game.id} />
@@ -194,10 +210,16 @@ const Dropmenu = styled(motion.div)`
   border: 4px double #FFC248;
 
   @media (max-width: 1000px) {
-	  width: 50vw;
+	  width: 75vw;
 	  /* width: 0%;
 	  height: 0%;
 	  opacity: 0; */
+	}
+
+	@media (max-width: 600px) {
+	  width: 0%;
+	  height: 0%;
+	  opacity: 0;
 	}
  
 `;
