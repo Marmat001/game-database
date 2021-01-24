@@ -54,12 +54,9 @@ const GameContainer = styled(motion.div)`
 		height: 40vh;
 		object-fit: cover;
 
-
 		@media (max-width: 550px) {
 			height: 35vh;
-			
 		}
-
 	}
 
 	h3 {
@@ -75,7 +72,6 @@ const GameContainer = styled(motion.div)`
 		h3 {
 			font-size: 1.1rem;
 			padding: 0.75rem;
-
 		}
 		p {
 			margin-bottom: 0rem;
@@ -83,7 +79,7 @@ const GameContainer = styled(motion.div)`
 		}
   }
 
-  @media (max-width: 500px) {
+  /* @media (max-width: 500px) {
 	h3 {
 		font-size: 1rem;
 		padding: 0.5rem;
@@ -91,5 +87,5 @@ const GameContainer = styled(motion.div)`
 	p    {
 		font-size: 85%;
 		}
-}
+} */
 `;

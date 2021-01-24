@@ -9,6 +9,7 @@ export default function ScrollTop() {
 				top: 0,
 				left: 0
 			});
+			document.body.style.overflow = 'auto';
 		},
 		[ pathname ]
 	);

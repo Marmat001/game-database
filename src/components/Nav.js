@@ -19,7 +19,7 @@ const Nav = () => {
 					<Link to="/new-games">New Games</Link>
 					<Line
 						transition={{ duration: 0.75 }}
-						initial={{ width: '0%' }}
+						initial={{ width: '-10%' }}
 						animate={{ width: pathname.includes(`/new-games`) ? '55%' : '0%' }}
 					/>
 				</li>
@@ -27,7 +27,7 @@ const Nav = () => {
 					<Link to="/upcoming-games">Upcoming Games</Link>
 					<Line
 						transition={{ duration: 0.75 }}
-						initial={{ width: '0%' }}
+						initial={{ width: '-10%' }}
 						animate={{ width: pathname.includes('/upcoming-games') ? '50%' : '0%' }}
 					/>
 				</li>
@@ -35,7 +35,7 @@ const Nav = () => {
 					<Link to="/popular-games">Popular Games</Link>
 					<Line
 						transition={{ duration: 0.75 }}
-						initial={{ width: '0%' }}
+						initial={{ width: '-10%' }}
 						animate={{ width: pathname.includes('/popular-games') ? '50%' : '0%' }}
 					/>
 				</li>

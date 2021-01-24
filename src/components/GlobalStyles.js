@@ -31,11 +31,11 @@ html {
      font-family: "Anton", cursive;
      font-weight: lighter;
      color: white;
-
+/* 
      @media(max-width: 400px) {
     padding: 1rem;
     font-size: 2rem;
-  }
+  } */
  }
  h3 {
      font-size: 1.3rem;

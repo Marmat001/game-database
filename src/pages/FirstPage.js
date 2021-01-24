@@ -141,8 +141,6 @@ button {
 	@media (max-width: 800px) {
 	width: 40%;	
 	}
-
-
 }
 
 form {
@@ -166,14 +164,11 @@ form {
 	  flex-direction: column;
 	  align-items: center;
 	  justify-content: center;
-	
 	}
 
 	@media (max-width: 550px) {
 		width: 85vw;	
 	}
-
-
 } 
 `;
 
@@ -197,7 +192,7 @@ h1 {
 
 }
 svg {
-margin-bottom: 2rem;
+  margin-bottom: 2rem;
   color: white;
 }
 `;
@@ -211,9 +206,6 @@ const Dropmenu = styled(motion.div)`
 
   @media (max-width: 1000px) {
 	  width: 75vw;
-	  /* width: 0%;
-	  height: 0%;
-	  opacity: 0; */
 	}
 
 	@media (max-width: 600px) {

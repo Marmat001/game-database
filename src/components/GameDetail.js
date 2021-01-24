@@ -26,6 +26,7 @@ export default function GameDetail({ pathId }) {
 		}
 	};
 
+
 	const getStars = () => {
 		const stars = [];
 		const rating = Math.floor(game.rating);
@@ -95,7 +96,9 @@ export default function GameDetail({ pathId }) {
 
 	const zoomInHandler = () => {
 		setZoomIn(true);
+		document.body.style.overflow = 'hidden';
 	};
+
 
 	return (
 		<div>
@@ -181,37 +184,26 @@ export default function GameDetail({ pathId }) {
 }
 
 const CardContainer = styled(motion.div)`
-  width: 100%;
+  width: 100vw;
   min-height: 100vh;
-  overflow-y: scroll;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const Detail = styled(motion.div)`
   width: 80%;
   border-radius: 1rem;
   padding: 2rem 5rem;
-  position: absolute;
-  left: 9%;
   color: white;
   z-index: 10;
   img {
     width: 100%;
   }
 
-  @media (max-width: 900px) {
-	width: 90%;
-	left: 5%;
-	padding: 2rem 3rem;
-}
-
-@media (max-width: 600px) {
+@media (max-width: 900px) {
 	width: 100%;
-	left: 0%;
-	padding: 2rem 2rem;
+	padding: 0rem 1rem;
 }
 `;
 
@@ -219,7 +211,7 @@ const Stats = styled(motion.div)`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 5rem;
+  margin-top: 2rem;
   img {
     width: 2rem;
     height: 2rem;
@@ -230,11 +222,9 @@ const Stats = styled(motion.div)`
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	margin-top: .5rem;
 }
 
-@media (max-width: 500px) {
-	margin-top: 2rem;
-}
 `;
 
 const Rating = styled(motion.div)`
@@ -245,13 +235,6 @@ const Rating = styled(motion.div)`
 	p {
 		color: lightgreen;
 	}
-
-	@media (max-width: 1350px) {
-		h3 {
-			font-size: 2rem;
-		}
-
-	}
 		
 		@media (max-width: 500px) {
 			h3 {
@@ -261,9 +244,7 @@ const Rating = styled(motion.div)`
 		.star {
 			font-size: 1.1rem;
 		}
-
 	}
-
 `
 
 const Info = styled(motion.div)`
@@ -314,13 +295,8 @@ img {
 	  border-radius: 10px;
 }
 
-@media (max-width: 750px) {
-	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-	grid-row-gap: 3rem;
-}
-
-@media (max-width: 500px) {
-	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+@media (max-width: 550px) {
+	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 	grid-row-gap: 1.5rem;
 }
 `;
@@ -332,9 +308,6 @@ const Information = styled(motion.div)`
 	p {
 		font-size: 1rem;
 	}
-}
-
-@media (max-width: 500px) {
 	margin: 2rem 0rem;
 }
 `;
@@ -343,12 +316,13 @@ const PopUp = styled(motion.div)`
   width: 100%;
   min-height: 100vh;
   overflow-y: scroll;
+  overflow-x: hidden;
   background: rgba(0, 0, 0, 0.5);
   margin-top: 3.9rem;
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 5;
+  z-index: 50;
   &::-webkit-scrollbar {
     width: 0.5rem;
   }
@@ -368,7 +342,7 @@ const PopUpContent = styled(motion.div)`
   position: absolute;
   left: 10%;
   color: black;
-  z-index: 10;
+  z-index: 100;
   img {
     width: 100%;
 	border-radius: 10px;
@@ -378,14 +352,6 @@ const PopUpContent = styled(motion.div)`
   @media (max-width: 900px) {
 	width: 90%;
 	left: 5%;
-	padding: 1rem 3rem;
-  }
-
-  @media (max-width: 600px) {
-	padding: 1rem 2rem;
-  }
-
-  @media (max-width: 400px) {
 	padding: 1rem 1rem;
   }
 `;
