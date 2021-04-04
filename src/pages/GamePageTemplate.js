@@ -1,33 +1,33 @@
-import React, { useEffect } from 'react';
-import GameDetail from '../components/GameDetail';
+import React, { useEffect } from 'react'
+import GameDetail from './GameDetailPage'
 
-import Game from '../components/Game';
+import Game from '../components/Game'
 
-import styled from 'styled-components';
-import { motion, AnimatePresence, AnimateSharedLayout } from 'framer-motion';
-import { useLocation } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import styled from 'styled-components'
+import { motion, AnimatePresence, AnimateSharedLayout } from 'framer-motion'
+import { useLocation } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
 
 export default function GamePageTemplate({ gameGenre, title, fetchGames, isBuffering }) {
-	const location = useLocation();
-	const pathId = location.pathname.split('/')[2];
-	const dispatch = useDispatch();
+	const location = useLocation()
+	const pathId = location.pathname.split('/')[2]
+	const dispatch = useDispatch()
 
 	useEffect(
 		() => {
 			if (fetchGames) {
-				dispatch(fetchGames);
+				dispatch(fetchGames)
 			}
 		},
 		[ dispatch ]
-	);
+	)
 
 	return (
 		<div>
 			{isBuffering && <LoadingMessage>Loading Results...</LoadingMessage>}
 			{!isBuffering && (
 				<GameList>
-					<AnimateSharedLayout type="crossfade">
+					<AnimateSharedLayout type='crossfade'>
 						<AnimatePresence>{pathId && <GameDetail pathId={pathId} />}</AnimatePresence>
 						<h2>{title}</h2>
 						<Games>
@@ -45,7 +45,7 @@ export default function GamePageTemplate({ gameGenre, title, fetchGames, isBuffe
 				</GameList>
 			)}
 		</div>
-	);
+	)
 }
 
 const GameList = styled(motion.div)`
@@ -68,7 +68,7 @@ const GameList = styled(motion.div)`
 		padding: 1.5rem 0rem;
     }
 	}
-`;
+`
 
 const Games = styled(motion.div)`
     min-height: 80vh;
@@ -91,7 +91,7 @@ const Games = styled(motion.div)`
   
 
  
-`;
+`
 
 const LoadingMessage = styled.h1`
 	font-size: 3rem;
@@ -103,6 +103,6 @@ const LoadingMessage = styled.h1`
 	height: 80vh;
 
 	@media (max-width: 500px) {
-	font-size: 2rem;
-  }
-`;
+		font-size: 2rem;
+	}
+`

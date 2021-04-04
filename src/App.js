@@ -8,7 +8,7 @@ import UpcomingGames from './pages/UpcomingGames';
 import PopularGames from './pages/PopularGames';
 
 import ScrollTop from './components/ScrollTop';
-import GameDetail from './components/GameDetail';
+import GameDetail from './pages/GameDetailPage';
 
 
 function App() {

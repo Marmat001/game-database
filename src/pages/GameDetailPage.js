@@ -184,7 +184,6 @@ export default function GameDetail({ pathId }) {
 }
 
 const CardContainer = styled(motion.div)`
-  width: 100vw;
   min-height: 100vh;
   display: flex;
   justify-content: center;
@@ -219,12 +218,14 @@ const Stats = styled(motion.div)`
   }
 
   @media (max-width: 1350px) {
-	flex-direction: column;
-	justify-content: center;
+	justify-content: space-evenly;
 	align-items: center;
 	margin-top: .5rem;
 }
 
+@media (max-width: 650px) {
+	flex-direction: column;
+}
 `;
 
 const Rating = styled(motion.div)`
