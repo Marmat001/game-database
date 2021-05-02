@@ -25,17 +25,18 @@ const currentDate = `${currentYear}-${currentMonth}-${currentDay}`;
 const lastYear = `${currentYear - 1}-${currentMonth}-${currentDay}`;
 const nextYear = `${currentYear + 1}-${currentMonth}-${currentDay}`;
 
-const popular_games = `games?dates=${lastYear},${currentDate}&ordering=-rating&page_size=21`;
-const upcoming_games = `games?dates=${currentDate},${nextYear}&ordering=-added&page_size=21`;
-const newGames = `games?dates=${lastYear},${currentDate}&ordering=-released&page_size=21`;
+const popular_games = `games?key=${process.env.REACT_APP_RAWG_API_KEY}&dates=${lastYear},${currentDate}&ordering=-rating&page_size=21`;
+const upcoming_games = `games?key=${process.env.REACT_APP_RAWG_API_KEY}&dates=${currentDate},${nextYear}&ordering=-added&page_size=21`;
+const newGames = `games?key=${process.env.REACT_APP_RAWG_API_KEY}&dates=${lastYear},${currentDate}&ordering=-released&page_size=21`;
 
 export const popularGamesURL = () => `${base_url}${popular_games}`;
 export const upcomingGamesURL = () => `${base_url}${upcoming_games}`;
 export const newGamesURL = () => `${base_url}${newGames}`;
 
-export const gameDetailsURL = (game_id) => `${base_url}games/${game_id}`;
+export const gameDetailsURL = (game_id) => `${base_url}games/${game_id}?key=${process.env.REACT_APP_RAWG_API_KEY}`;
 
-export const gameScreenshotURL = (game_id) => `${base_url}games/${game_id}/screenshots`;
+export const gameScreenshotURL = (game_id) => `${base_url}games/${game_id}/screenshots?key=${process.env.REACT_APP_RAWG_API_KEY}`;
 
-export const searchGameURL = (game_name) => `${base_url}games?search=${game_name}&page_size=21`;
+export const searchGameURL = (game_name) => `${base_url}games?key=${process.env.REACT_APP_RAWG_API_KEY}&search=${game_name}&page_size=21`;
+
 

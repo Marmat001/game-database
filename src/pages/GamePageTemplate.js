@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import GameDetail from './GameDetailPage'
+import GameDetail from '../pages/GameDetailPage'
 
 import Game from '../components/Game'
 
