@@ -13,9 +13,9 @@ Some of the technology applied to build this application: <br />
 Some of the features provided in this application are:
 <br /><br />
 
-Play / pause <br />
-Skip Forward / back <br />
-View song length / time left <br />
+Game search feature <br />
+Individual section for new / upcoming / most popular & searched games <br />
+Game page with detailed information about each game, including game description, release date, star rating, console availability and an interactive image gallery <br />
 Drag handler to change position in current song <br />
 Song library to choose songs from <br />
 Mobile responsive
