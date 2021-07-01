@@ -13,10 +13,10 @@ Some of the technology applied to build this application: <br />
 Some of the features provided in this application are:
 <br /><br />
 
-Game search feature <br />
-Individual section for new / upcoming / most popular & searched games <br />
-Game page with detailed information about each game, including game description, release date, star rating, console availability and an interactive image gallery <br />
-Transition animations using framer motion <br />
-Navigation that underlines the current active page <br />
-Particle effects on homepage using ParticleJS <br />
-Mobile responsive
+- Game search feature <br />
+- Individual section for new / upcoming / most popular & searched games <br />
+- Game page with detailed information about each game, including game description, release date, star rating, console availability and an interactive image gallery <br />
+- Transition animations using framer motion <br />
+- Navigation that underlines the current active page <br />
+- Particle effects on homepage using ParticleJS <br />
+- Mobile responsive
